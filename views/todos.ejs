@@ -1,0 +1,26 @@
+<!-- todos.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Todo List</h1>
+  <ul>
+    <% todos.forEach((todo, index) => { %>
+      <li class="todo-item">
+        <%= todo %>
+        <form method="post" action="/todos/delete">
+          <input type="hidden" name="index" value="<%= index %>">
+          <button class="delete-button" type="submit">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <form method="post" action="/todos">
+    <input type="text" name="todo" placeholder="New Todo" required>
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
